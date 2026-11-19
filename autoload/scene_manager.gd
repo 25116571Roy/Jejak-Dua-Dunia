@@ -26,7 +26,7 @@ func _deferred_change_scene(scene_path: String) -> void:
 	if current_scene:
 		current_scene.free()
 	
-	var new_scene := load(scene_path).instantiate()
+	var new_scene: Node = load(scene_path).instantiate()
 	get_tree().root.add_child(new_scene)
 	get_tree().current_scene = new_scene
 	current_scene = new_scene

@@ -36,14 +36,15 @@ func start_timer(timer_name: String) -> void:
 	performance_metrics["timer_%s_start" % timer_name] = Time.get_ticks_msec()
 
 func end_timer(timer_name: String) -> float:
-	var start := performance_metrics.get("timer_%s_start" % timer_name, 0.0)
+	var start: float = performance_metrics.get("timer_%s_start" % timer_name, 0.0)
 	if start == 0.0:
 		log_warning("Timer %s was never started" % timer_name)
 		return 0.0
 	
-	var elapsed := Time.get_ticks_msec() - start
+	var elapsed: float = Time.get_ticks_msec() - start
 	log_performance("timer_%s_ms" % timer_name, elapsed)
 	return elapsed
 
 func log_game_event(event_name: String, data: Dictionary = {}) -> void:
-	log("Event: %s | Data: %s" % [event_name, data], "GameEvent")
+	var message := "Event: %s | Data: %s" % [event_name, data]
+	log(message, "GameEvent")

@@ -1,4 +1,3 @@
-class_name Constants
 extends Node
 
 const GAME_VERSION := "0.1.0"
@@ -84,5 +83,5 @@ const DEFAULT_SFX_VOLUME := 0.8
 const DEFAULT_VOICE_VOLUME := 0.8
 const DEFAULT_UI_VOLUME := 0.8
 
-const DEBUG_MODE := OS.is_debug_build()
+var DEBUG_MODE: bool = OS.is_debug_build()
 const DEV_MODE := false

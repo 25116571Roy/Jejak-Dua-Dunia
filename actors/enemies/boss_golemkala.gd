@@ -23,8 +23,8 @@ func _physics_process(delta: float) -> void:
 	_update_attack_pattern(delta)
 
 func _check_phase_transition() -> void:
-	var health_percentage := health.get_health_percentage()
-	var new_phase := 1
+	var health_percentage: float = health.get_health_percentage() if health.has_method("get_health_percentage") else 1.0
+	var new_phase: int = 1
 	
 	if health_percentage <= phase_2_health_threshold:
 		new_phase = 3
@@ -63,7 +63,7 @@ func _update_attack_pattern(delta: float) -> void:
 
 func _phase_1_behavior() -> void:
 	var attacks := ["slam", "charge"]
-	var attack := attacks[attack_pattern_index % attacks.size()]
+	var attack: String = attacks[attack_pattern_index % attacks.size()]
 	
 	if attack == "slam":
 		_perform_slam()
@@ -75,7 +75,7 @@ func _phase_1_behavior() -> void:
 
 func _phase_2_behavior() -> void:
 	var attacks := ["slam", "charge", "projectile"]
-	var attack := attacks[attack_pattern_index % attacks.size()]
+	var attack: String = attacks[attack_pattern_index % attacks.size()]
 	
 	if attack == "slam":
 		_perform_slam()
@@ -89,7 +89,7 @@ func _phase_2_behavior() -> void:
 
 func _phase_3_behavior() -> void:
 	var attacks := ["slam", "charge", "projectile"]
-	var attack := attacks[attack_pattern_index % attacks.size()]
+	var attack: String = attacks[attack_pattern_index % attacks.size()]
 	
 	if attack == "slam":
 		_perform_slam()

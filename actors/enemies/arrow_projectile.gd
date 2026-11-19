@@ -1,14 +1,14 @@
 class_name ArrowProjectile
-extends Area2D
+extends CharacterBody2D
 
 @export var speed: float = 400.0
 @export var damage: float = 12.0
 
 var target_direction: Vector2 = Vector2.ZERO
 
-func setup(speed: float, damage: float, direction: Vector2) -> void:
-	self.speed = speed
-	self.damage = damage
+func setup(p_speed: float, p_damage: float, direction: Vector2) -> void:
+	self.speed = p_speed
+	self.damage = p_damage
 	self.target_direction = direction.normalized()
 	
 	velocity = self.target_direction * speed
@@ -22,8 +22,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_screen():
 		queue_free()
 	
-	var direction := target_direction
-	var velocity_direction := velocity.normalized()
+	var direction: Vector2 = target_direction
+	var velocity_direction: Vector2 = velocity.normalized()
 	
 	if abs(velocity_direction.x) > abs(direction.x):
 		velocity_direction.x = direction.x
@@ -36,3 +36,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 	
 	move_and_slide()
+
+func is_on_screen() -> bool:
+	return get_viewport_rect().has_point(global_position)

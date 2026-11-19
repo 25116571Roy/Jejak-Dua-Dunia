@@ -9,8 +9,8 @@ signal stagger_ended
 @export var player1: Node2D
 @export var player2: Node2D
 
-var health: Health
-var stagger: Stagger
+var health: Node
+var stagger: Node
 var state_machine: StateMachine
 var is_dead: bool = false
 var target_player: Node2D = null
@@ -25,15 +25,17 @@ func _ready() -> void:
 	_find_players()
 
 func _setup_components() -> void:
-	health = $Health
+	health = $Health if has_node("Health") else null
 	if not health:
-		health = Health.new()
+		health = Node.new()
+		health.set_script(load("res://components/health.gd"))
 		health.max_health = enemy_data.max_health
 		add_child(health)
 	
-	stagger = $Stagger
+	stagger = $Stagger if has_node("Stagger") else null
 	if not stagger:
-		stagger = Stagger.new()
+		stagger = Node.new()
+		stagger.set_script(load("res://components/stagger.gd"))
 		stagger.stagger_threshold = enemy_data.stagger_threshold
 		add_child(stagger)
 	

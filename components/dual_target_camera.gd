@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	_update_camera_zoom(delta)
 
 func _update_camera_position() -> void:
-	var midpoint := (player1.global_position + player2.global_position) / 2.0
+	var midpoint: Vector2 = (player1.global_position + player2.global_position) / 2.0
 	target_position = midpoint
 	global_position = global_position.lerp(target_position, 0.1)
 

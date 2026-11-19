@@ -1,7 +1,7 @@
 class_name ArcherEnemy
 extends EnemyBase
 
-const ARROW_PROJECTILE = preload("res://actors/enemies/arrow_projectile.tscn")
+var ARROW_PROJECTILE: PackedScene
 
 @export var draw_time: float = 1.0
 @export var projectile_speed: float = 400.0
@@ -9,6 +9,11 @@ const ARROW_PROJECTILE = preload("res://actors/enemies/arrow_projectile.tscn")
 
 var draw_timer: float = 0.0
 var is_drawing: bool = false
+
+func _ready() -> void:
+	super._ready()
+	if ResourceLoader.exists("res://actors/enemies/arrow_projectile.tscn"):
+		ARROW_PROJECTILE = load("res://actors/enemies/arrow_projectile.tscn")
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -49,10 +54,11 @@ func _try_shoot() -> void:
 			last_attack_time = 0.0
 
 func _fire_arrow() -> void:
-	if not target_player:
+	if not target_player or not ARROW_PROJECTILE:
 		return
 	
-	var arrow := ARROW_PROJECTILE.instantiate()
+	var arrow: Node = ARROW_PROJECTILE.instantiate()
 	get_parent().add_child(arrow)
 	arrow.global_position = global_position
-	arrow.setup(projectile_speed, projectile_damage, get_direction_to_target())
+	if arrow.has_method("setup"):
+		arrow.setup(projectile_speed, projectile_damage, get_direction_to_target())

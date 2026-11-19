@@ -21,7 +21,7 @@ func _find_staggered_enemy() -> void:
 		if enemy.has_node("Stagger"):
 			var stagger_component := enemy.get_node("Stagger")
 			if stagger_component.is_staggered:
-				var distance := actor.global_position.distance_to(enemy.global_position)
+				var distance: float = actor.global_position.distance_to(enemy.global_position)
 				if distance <= finisher_range:
 					target_enemy = enemy
 					break

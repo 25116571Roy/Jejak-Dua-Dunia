@@ -17,7 +17,7 @@ func _apply_taunt_effect() -> void:
 	var taunt_radius: float = 260.0
 	
 	for enemy in get_tree().get_nodes_in_group("enemy"):
-		var distance := actor.global_position.distance_to(enemy.global_position)
+		var distance: float = actor.global_position.distance_to(enemy.global_position)
 		if distance <= taunt_radius:
 			if enemy.has_method("set_target"):
 				enemy.set_target(actor)

@@ -7,8 +7,8 @@ signal combo_increased(count: int)
 @export var player_id: int = 1
 @export var player_data: PlayerData
 
-var state_machine: StateMachine
-var health: Health
+var state_machine: Node
+var health: Node
 var stats: Dictionary = {}
 var is_down: bool = false
 var combo_count: int = 0
@@ -25,11 +25,12 @@ func _ready() -> void:
 	_setup_stats()
 
 func _setup_components() -> void:
-	state_machine = $StateMachine
-	health = $Health
+	state_machine = $StateMachine if has_node("StateMachine") else null
+	health = $Health if has_node("Health") else null
 	
 	if not health:
-		health = Health.new()
+		health = Node.new()
+		health.set_script(load("res://components/health.gd"))
 		add_child(health)
 	
 	if not state_machine:

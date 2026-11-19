@@ -1,10 +1,10 @@
-class_name LuaWaveManager
+class_name WaveManager
 extends Node
 
-@signal wave_completed(wave_index: int)
-@signal all_waves_complete()
+signal wave_completed(wave_index: int)
+signal all_waves_complete()
 
-@export var wave_Array[WaveData]
+@export var wave_data: Array[WaveData]
 
 var current_wave_index: int = 0
 var is_wave_active: bool = false
