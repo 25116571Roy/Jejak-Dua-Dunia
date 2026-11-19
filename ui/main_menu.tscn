@@ -1,0 +1,13 @@
+extends Control
+
+signal start_game
+signal quit_game
+signal options
+
+func _ready() -> void:
+	$StartButton.pressed.connect(start_game.emit)
+	$OptionsButton.pressed.connect(options.emit)
+	$QuitButton.pressed.connect(quit_game.emit)
+
+func _on_about_to_show() -> void:
+	pass

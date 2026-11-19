@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/player_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+character_name = "Raka"
+max_health = 100.0
+movement_speed = 230.0
+jump_impulse = 640.0
+gravity = 980.0
+attack_damage = 20.0
+attack_cooldown = 0.5
+invincibility_duration = 1.0
+parry_window = 0.25
+parry_stagger_bonus = 30.0
+taunt_radius = 260.0
+taunt_duration = 4.0
+taunt_cooldown = 6.0
+finisher_damage_multiplier = 3.5
+dash_speed = 0.0
+dash_duration = 0.0
+dash_cooldown = 0.0
+weakpoint_damage_multiplier = 1.0
+air_control_strength = 1.0
