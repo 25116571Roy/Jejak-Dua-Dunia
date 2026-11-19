@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	if enemies_alive <= 0:
 		is_wave_active = false
 		if current_wave_index < wave_data.size():
-			yield(get_tree().create_timer(3.0), "timeout")
+			await get_tree().create_timer(3.0).timeout
 			start_next_wave()
 
 func _spawn_enemy(wave: WaveData) -> void:

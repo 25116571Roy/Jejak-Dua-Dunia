@@ -33,8 +33,8 @@ func _update_camera_position() -> void:
 	global_position = global_position.lerp(target_position, 0.1)
 
 func _update_camera_zoom(delta: float) -> void:
-	var distance := player1.global_position.distance_to(player2.global_position)
-	var zoom_factor := clamp(1.0 - (distance / max_distance), zoom_min, zoom_max)
+	var distance: float = player1.global_position.distance_to(player2.global_position)
+	var zoom_factor: float = clamp(1.0 - (distance / max_distance), zoom_min, zoom_max)
 	
 	target_zoom = zoom_factor
 	zoom = zoom.lerp(Vector2.ONE * target_zoom, zoom_speed * delta)

@@ -46,5 +46,5 @@ func end_timer(timer_name: String) -> float:
 	return elapsed
 
 func log_game_event(event_name: String, data: Dictionary = {}) -> void:
-	var message := "Event: %s | Data: %s" % [event_name, data]
-	log(message, "GameEvent")
+	if enable_debug_logs:
+		print("[GameEvent] Event: %s | Data: %s" % [event_name, data])
