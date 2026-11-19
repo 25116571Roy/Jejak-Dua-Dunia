@@ -11,13 +11,42 @@ config_version=5
 [application]
 
 config/name="Jejak Dua Dunia"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*res://autoload/event_bus.gd"
+InputRouter="*res://autoload/input_router.gd"
+GameState="*res://autoload/game_state.gd"
+SceneManager="*res://autoload/scene_manager.gd"
+AudioManager="*res://autoload/audio_manager.gd"
+SaveManager="*res://autoload/save_manager.gd"
+Analytics="*res://autoload/analytics.gd"
+Constants="*res://autoload/constants.gd"
+DebugManager="*res://autoload/debug_manager.gd"
+GameData="*res://autoload/game_data.gd"
+AppState="*res://autoload/app_state.gd"
+
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Raka"
+2d_physics/layer_3="Nisa"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="PlayerHitbox"
+2d_physics/layer_6="EnemyHitbox"
+2d_physics/layer_7="Projectile"
+2d_physics/layer_8="Interactive"
 
 [physics]
 
