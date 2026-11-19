@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_name = "Golemkala"
+max_health = 500.0
+movement_speed = 120.0
+attack_damage = 25.0
+attack_range = 200.0
+stagger_threshold = 150.0
+stagger_duration = 4.0
+knockback_force = 300.0
+aggro_range = 1000.0
+attack_cooldown = 3.0
+wind_up_time = 1.5
+recovery_time = 1.0
+xp_reward = 100
+score_reward = 500
