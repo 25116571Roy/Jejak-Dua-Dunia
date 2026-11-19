@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://crrhkrn63aub6"]
+
+[ext_resource type="Texture2D" uid="uid://cldnu30v26yy2" path="res://script/Raka.png" id="1_6878k"]
+
+[node name="Player1" type="CharacterBody2D" unique_id=393841665]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=137131747]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_6878k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645699400]
