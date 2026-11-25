@@ -1,4 +1,16 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-sprite/
+
+*.exe
+*.pck
+*.console.exe
+export_presets.cfg
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+*.uid
