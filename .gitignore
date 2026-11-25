@@ -1,7 +1,11 @@
-# Godot 4+ specific ignores
+# Godot 4+
 .godot/
 /android/
 
+# Sprites / art (dikelola terpisah)
+sprite/
+
+# Build output — jangan commit
 *.exe
 *.pck
 *.console.exe
@@ -12,5 +16,5 @@ export_presets.cfg
 Thumbs.db
 desktop.ini
 
-
+# Godot UID (di-generate tiap mesin)
 *.uid
