@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://split_screen_stub"]
+
+[sub_resource type="World2D" id="World2D_1"]
+
+[node name="SplitScreen" type="Node2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+world_2d = SubResource("World2D_1")
+disable_3d = true
+size = Vector2i(640, 720)
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+world_2d = SubResource("World2D_1")
+disable_3d = true
+size = Vector2i(640, 720)
+
+[node name="Divider" type="ColorRect" parent="."]
+color = Color(0, 0, 0, 1)
+offset_left = 639.0
+offset_right = 641.0
+offset_bottom = 720.0
