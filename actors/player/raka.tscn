@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://actors/player/raka.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c0dtm35mt4gbh" path="res://sprite/entity/Raka.png" id="2"]
+[ext_resource type="Resource" path="res://data/raka_data.tres" id="3"]
+[ext_resource type="Script" uid="uid://b2g0s0wp70248" path="res://components/health.gd" id="4"]
+[ext_resource type="Script" uid="uid://bgr7gbfq84tmo" path="res://components/hitbox.gd" id="5"]
+[ext_resource type="Script" uid="uid://bir3tf5i0461j" path="res://components/hurtbox.gd" id="6"]
+
+[sub_resource type="RectangleShape2D" id="body_shape"]
+size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="hurtbox_shape"]
+size = Vector2(22, 42)
+
+[sub_resource type="RectangleShape2D" id="hitbox_shape"]
+size = Vector2(28, 20)
+
+[sub_resource type="CircleShape2D" id="revive_shape"]
+radius = 80.0
+
+[node name="Raka" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1")
+player_id = 1
+data = ExtResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("body_shape")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4")
+hp_maks = 100.0
+
+[node name="HurtboxRaka" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 32
+script = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxRaka"]
+shape = SubResource("hurtbox_shape")
+
+[node name="HitboxRaka" type="Area2D" parent="."]
+position = Vector2(20, 0)
+collision_layer = 16
+collision_mask = 8
+monitoring = false
+script = ExtResource("5")
+damage = 20.0
+stagger_damage = 20.0
+knockback_force = 200.0
+milik_pemain = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxRaka"]
+shape = SubResource("hitbox_shape")
+
+[node name="ReviveArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReviveArea"]
+shape = SubResource("revive_shape")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true

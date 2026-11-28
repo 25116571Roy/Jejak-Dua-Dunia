@@ -17,3 +17,5 @@ extends Resource
 @export var cooldown_taunt: float = 8.0
 @export var jarak_revive: float = 80.0
 @export var durasi_revive: float = 3.0
+@export var chain_anchor_duration: float = 3.5
+@export var counter_multiplier: float = 2.5
