@@ -18,9 +18,13 @@ var state: String = "idle"
 var timer_state: float = 0.0
 var cd_serang: float = 0.0
 var hadap_kanan: bool = true
+var bar_hp: ColorRect = null
+var bar_serang: ColorRect = null
+var bar_root: Control = null
 
 func _ready() -> void:
 	add_to_group("enemies")
+	_setup_bar_ui()
 	if data:
 		hp_maks = data.hp_maks
 		kecepatan_gerak = data.kecepatan_gerak
@@ -69,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	_update_ai(delta)
 
 	move_and_slide()
+	_update_bar_visual()
 
 func _update_ai(delta: float) -> void:
 	if state == "stagger":
@@ -205,3 +210,61 @@ func _on_mati() -> void:
 		col.set_deferred("disabled", true)
 	await get_tree().create_timer(0.6).timeout
 	queue_free()
+
+func _setup_bar_ui() -> void:
+	bar_root = Control.new()
+	bar_root.name = "BarInfo"
+	bar_root.position = Vector2(-20, -34)
+	add_child(bar_root)
+
+	#bg bar hp
+	var bg_hp := ColorRect.new()
+	bg_hp.size = Vector2(40, 5)
+	bg_hp.color = Color(0.1, 0.1, 0.1, 0.8)
+	bar_root.add_child(bg_hp)
+
+	#isi bar hp
+	bar_hp = ColorRect.new()
+	bar_hp.size = Vector2(40, 5)
+	bar_hp.color = Color(0.85, 0.2, 0.2)
+	bar_root.add_child(bar_hp)
+
+	#bg bar serang
+	var bg_serang := ColorRect.new()
+	bg_serang.position = Vector2(0, 6)
+	bg_serang.size = Vector2(40, 4)
+	bg_serang.color = Color(0.1, 0.1, 0.1, 0.8)
+	bar_root.add_child(bg_serang)
+
+	#isi bar serang
+	bar_serang = ColorRect.new()
+	bar_serang.position = Vector2(0, 6)
+	bar_serang.size = Vector2(0, 4)
+	bar_serang.color = Color(1.0, 0.85, 0.2)
+	bar_root.add_child(bar_serang)
+
+func _update_bar_visual() -> void:
+	if not bar_root:
+		return
+	if state == "dead":
+		bar_root.hide()
+		return
+
+	#update hp
+	var health := get_node_or_null("Health")
+	if health and bar_hp:
+		var rasio: float = clamp(health.hp_sekarang / health.hp_maks, 0.0, 1.0)
+		bar_hp.size.x = 40.0 * rasio
+
+	#update bar serang
+	if bar_serang:
+		if state == "windup":
+			var maks_w: float = max(durasi_windup, 0.01)
+			var kemajuan: float = clamp(1.0 - (timer_state / maks_w), 0.0, 1.0)
+			bar_serang.size.x = 40.0 * kemajuan
+			bar_serang.color = Color(1.0, 0.85, 0.2)
+		elif state == "attack":
+			bar_serang.size.x = 40.0
+			bar_serang.color = Color(1.0, 0.2, 0.2)
+		else:
+			bar_serang.size.x = 0.0

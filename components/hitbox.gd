@@ -30,12 +30,16 @@ func _atur_layer() -> void:
 
 func activate() -> void:
 	monitoring = true
+	monitorable = true
 	is_active = true
 
 func deactivate() -> void:
 	monitoring = false
+	monitorable = false
 	is_active = false
 
 func _on_area_masuk(area: Area2D) -> void:
 	if area.is_in_group("hurtboxes"):
 		hit_connected.emit(area)
+		if area.has_method("_on_area_masuk"):
+			area._on_area_masuk(self)
