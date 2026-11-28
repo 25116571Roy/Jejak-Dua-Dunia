@@ -18,3 +18,7 @@ desktop.ini
 
 # Godot UID (di-generate tiap mesin)
 *.uid
+
+# testing
+TestNisaArea.tscn
+test_nisa_arena.gd

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/player_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kecepatan = 340.0
+kekuatan_lompat = -700.0
+hp_maks = 100.0
+damage_serangan = 9.0
+damage_finisher = 0.0
+knockback = 100.0
+durasi_parry = 0.0
+cooldown_parry = 0.0
+kecepatan_dash = 760.0
+durasi_dash = 0.16
+cooldown_dash = 0.8
+radius_taunt = 0.0
+durasi_taunt = 0.0
+cooldown_taunt = 0.0
+jarak_revive = 80.0
+durasi_revive = 2.0
