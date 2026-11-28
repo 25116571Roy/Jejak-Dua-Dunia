@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://levels/babak1/portal.gd" id="1_portal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(60, 80)
+
+[node name="Portal" type="Area2D" groups=["portals"]]
+collision_layer = 128
+collision_mask = 6
+script = ExtResource("1_portal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="PortalVisual" type="Node2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="OuterArch" type="Polygon2D" parent="PortalVisual"]
+color = Color(0.2, 0.3, 0.5, 0.8)
+polygon = PackedVector2Array(-30, 40, -30, -20, -20, -40, 0, -48, 20, -40, 30, -20, 30, 40, 22, 40, 22, -16, 14, -32, 0, -38, -14, -32, -22, -16, -22, 40)
+
+[node name="VortexCore" type="Polygon2D" parent="PortalVisual"]
+color = Color(0.3, 0.8, 1, 0.6)
+polygon = PackedVector2Array(-18, 36, -18, -14, -10, -28, 0, -34, 10, -28, 18, -14, 18, 36)
+
+[node name="RuneTop" type="Polygon2D" parent="PortalVisual"]
+position = Vector2(0, -48)
+color = Color(0.6, 0.95, 1, 0.9)
+polygon = PackedVector2Array(-5, 0, 0, -8, 5, 0, 0, 5)
+
+[node name="StatusLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -120.0
+offset_right = 100.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "Portal Terkunci"
+horizontal_alignment = 1
+vertical_alignment = 1

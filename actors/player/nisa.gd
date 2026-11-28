@@ -12,7 +12,7 @@ extends "res://actors/player/player_base.gd"
 @export var bonus_belakang: float = 1.8
 @export var bonus_dash: float = 1.4
 @export var bounce_udara: float = -200.0
-@export var batas_level: Rect2 = Rect2(0, 0, 1280, 720)
+@export var batas_level: Rect2 = Rect2()
 @export var durasi_revive: float = 2.0
 @export var durasi_serang: float = 0.2
 @export var durasi_tanam: float = 0.5
@@ -207,7 +207,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if not batas_level.has_point(global_position):
+	if (batas_level.size != Vector2.ZERO and not batas_level.has_point(global_position)) or global_position.y > 2500.0:
 		respawn()
 
 func respawn() -> void:

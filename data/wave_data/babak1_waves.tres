@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://b7aux0ddk6cou"]
+
+[ext_resource type="Script" uid="uid://bmb02qgky41y" path="res://data/wave_data.gd" id="1_waves"]
+
+[resource]
+script = ExtResource("1_waves")
+gelombang = Array[Dictionary]([{
+"enemies": [{
+"scene": "res://actors/enemies/swordsman.tscn",
+"spawner_index": 0
+}],
+"wave_index": 0
+}, {
+"enemies": [{
+"scene": "res://actors/enemies/archer.tscn",
+"spawner_index": 2
+}],
+"wave_index": 1
+}, {
+"enemies": [{
+"scene": "res://actors/enemies/swordsman.tscn",
+"spawner_index": 0
+}, {
+"scene": "res://actors/enemies/archer.tscn",
+"spawner_index": 1
+}],
+"wave_index": 2
+}])
