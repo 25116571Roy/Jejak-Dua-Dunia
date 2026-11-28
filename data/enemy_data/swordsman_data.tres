@@ -1,15 +1,11 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://beqprqbll8i74"]
 
-[ext_resource type="Script" path="res://data/enemy_data.gd" id="1"]
+[ext_resource type="Script" uid="uid://dgmm1jdqdqyvh" path="res://data/enemy_data.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
 hp_maks = 100.0
-kecepatan_gerak = 140.0
-damage_serangan = 10.0
-knockback = 150.0
-stagger_per_hit = 25.0
-stagger_maks = 100.0
+kecepatan_gerak = 30.0
 jarak_deteksi = 400.0
 jarak_serang = 50.0
-cooldown_serang = 1.0
+cooldown_serang = 1.5

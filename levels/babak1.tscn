@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://levels/split_screen.tscn" id="1_split"]
+[ext_resource type="PackedScene" path="res://levels/babak1/babak1_arena.tscn" id="2_arena"]
+
+[node name="Babak1" instance=ExtResource("1_split")]
+scene_level = ExtResource("2_arena")

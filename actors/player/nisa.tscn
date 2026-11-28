@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cxcbtyvq1ho4j"]
 
-[ext_resource type="Script" path="res://actors/player/nisa.gd" id="1"]
+[ext_resource type="Script" uid="uid://cjnxntquu0p1a" path="res://actors/player/nisa.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dd55ewlcfr0rf" path="res://sprite/entity/Nisa.png" id="2"]
 [ext_resource type="Resource" path="res://data/nisa_data.tres" id="3"]
 [ext_resource type="Script" uid="uid://b2g0s0wp70248" path="res://components/health.gd" id="4"]
@@ -25,35 +25,33 @@ radius = 24.0
 [sub_resource type="CircleShape2D" id="revive_shape"]
 radius = 80.0
 
-[node name="Nisa" type="CharacterBody2D"]
+[node name="Nisa" type="CharacterBody2D" unique_id=1541857965]
 collision_layer = 4
-collision_mask = 1
 script = ExtResource("1")
-player_id = 2
 data = ExtResource("3")
+player_id = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1439772572]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=939816530]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207476695]
 shape = SubResource("body_shape")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." unique_id=1702143234]
 script = ExtResource("4")
-hp_maks = 100.0
 
-[node name="HurtboxNisa" type="Area2D" parent="."]
+[node name="HurtboxNisa" type="Area2D" parent="." unique_id=308006807]
 collision_layer = 4
 collision_mask = 32
 script = ExtResource("6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxNisa"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxNisa" unique_id=365105398]
 shape = SubResource("hurtbox_shape")
 
-[node name="HitboxNisa" type="Area2D" parent="."]
+[node name="HitboxNisa" type="Area2D" parent="." unique_id=1374406034]
 position = Vector2(18, 0)
 collision_layer = 16
 collision_mask = 8
@@ -62,32 +60,30 @@ script = ExtResource("5")
 damage = 9.0
 stagger_damage = 15.0
 knockback_force = 100.0
-milik_pemain = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxNisa"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxNisa" unique_id=910833561]
 shape = SubResource("hitbox_shape")
 
-[node name="WeakpointDetector" type="Area2D" parent="."]
+[node name="WeakpointDetector" type="Area2D" parent="." unique_id=1730273641]
 position = Vector2(18, 0)
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakpointDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakpointDetector" unique_id=157242420]
 shape = SubResource("weakpoint_shape")
 
-[node name="SeedDetector" type="Area2D" parent="."]
+[node name="SeedDetector" type="Area2D" parent="." unique_id=1862837161]
 collision_layer = 0
 collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedDetector" unique_id=588482313]
 shape = SubResource("seed_shape")
 
-[node name="ReviveArea" type="Area2D" parent="."]
+[node name="ReviveArea" type="Area2D" parent="." unique_id=601663202]
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ReviveArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReviveArea" unique_id=1879049717]
 shape = SubResource("revive_shape")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = true
+[node name="Camera2D" type="Camera2D" parent="." unique_id=777719385]

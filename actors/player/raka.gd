@@ -13,7 +13,7 @@ extends "res://actors/player/player_base.gd"
 @export var cooldown_taunt: float = 6.0
 @export var durasi_revive: float = 2.0
 @export var durasi_serang: float = 0.35
-@export var batas_level: Rect2 = Rect2(0, 0, 1280, 720)
+@export var batas_level: Rect2 = Rect2()
 
 var gravitasi: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var posisi_spawn: Vector2
@@ -91,8 +91,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		timer_revive = 0.0
 
-	#cek batas level
-	if not batas_level.has_point(global_position):
+	#cek batas level / jatuh ke jurang
+	if (batas_level.size != Vector2.ZERO and not batas_level.has_point(global_position)) or global_position.y > 2500.0:
 		global_position = posisi_spawn
 		velocity = Vector2.ZERO
 
