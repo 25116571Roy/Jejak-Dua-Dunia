@@ -24,7 +24,7 @@ func _on_area_masuk(area: Area2D) -> void:
 
 	#knockback
 	if pemilik is CharacterBody2D and area.knockback_force > 0.0:
-		var arah := (pemilik.global_position - area.get_parent().global_position).normalized()
+		var arah: Vector2 = (pemilik.global_position - area.get_parent().global_position).normalized()
 		pemilik.velocity += arah * area.knockback_force
 
 	hit_received.emit(area, area.damage)
