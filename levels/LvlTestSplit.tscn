@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://levels/split_screen.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dp2m5nvh5bffu" path="res://scenes/levels/LvlTest.tscn" id="2"]
+
+[node name="LvlTestSplit" instance=ExtResource("1")]
+scene_level = ExtResource("2")

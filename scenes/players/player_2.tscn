@@ -18,4 +18,4 @@ texture = ExtResource("2_n7000")
 shape = SubResource("RectangleShape2D_d4nmj")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=661409755]
-enabled = false
+enabled = true
