@@ -20,5 +20,5 @@ desktop.ini
 *.uid
 
 # testing
-TestNisaArea.tscn
+TestNisaArena.tscn
 test_nisa_arena.gd
